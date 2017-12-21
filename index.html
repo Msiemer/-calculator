@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+    var calculater = new Object();
+
+    calculater.add = function(x, y) {
+        return parseInt(x) + parseInt(y);
+    }
+    calculater.subtract = function(x, y) {
+        return parseInt(x) - parseInt(y);
+    }
+    calculater.divide = function(x, y) {
+        return parseInt(x) / parseInt(y);
+    }
+    calculater.multiply = function(x, y) {
+        return parseInt(x) * parseInt(y);
+    }
+    var calculate = function() {
+        console.dir(this)
+
+        var x = document.querySelector("#x");
+        var y = document.querySelector("#y");
+
+        var result;
+
+        if (this.id == "btnadd") {
+            result = calculater.add(x.value, y.value);
+            console.log(result);
+        }
+
+        else if (this.id == "btnsub") {
+            result = calculater.subtract(x.value, y.value);
+            console.log(result);
+        }
+
+        else if (this.id == "btnmul") {
+            result = calculater.multiply(x.value, y.value);
+            console.log(result);
+        }
+
+        else if (this.id == "btndiv") {
+            result = calculater.divide(x.value, y.value);
+            console.log(result);
+        }
+        var out = document.querySelector("#out");
+        out.value = result;
+    }
+    </script>
+</head>
+
+<body>
+    <section>
+    <input type="text" class="X Y" id="x" />
+    </section>
+    <section>
+    <input type="text" class="Y" id="y" />
+    </section>
+    <section>
+    <input type="button" class="num btn-danger" id="num-1" value="1" />
+    <input type="button" class="num btn-danger" id="num-2" value="2" />
+    <input type="button" class="num btn-danger" id="num-3" value="3" />
+    </section>
+    <section>
+    <input type="button" class="num btn-danger" id="num-4" value="4" />
+    <input type="button" class="num btn-danger" id="num-5" value="5" />
+    <input type="button" class="num btn-danger" id="num-6" value="6" />
+    </section>
+    <section>
+    <input type="button" class="num btn-danger" id="num-7" value="7" />
+    <input type="button" class="num btn-danger" id="num-8" value="8" />
+    <input type="button" class="num btn-danger" id="num-9" value="9" />
+    </section>
+    <section>
+    <input type="button" class="num btn-danger" id="num-0" value="0" />
+    <input type="button" class="num btn-danger" id="btn." value="." />
+    <input type="button" class="num btn btn-success" id="btnadd" value="+" />
+    </section>
+    <section>
+    <input type="button" class="num btn btn-success" id="btnsub" value="-" />
+    <input type="button" class="num btn btn-success" id="btnmul" value="*" />
+    <input type="button" class="num btn btn-success" id="btndiv" value="÷" />
+    <output id="out" />
+    </section>
+    <section>
+    <input type="button" class="num equal btn btn-warning" id="btnequals"  value="=" />
+    <input type="button" class="num btn btn-warning" id="btnclear" value="C" />
+    </section>
+
+    <output id="output" />
+
+    <script>
+    var btns = document.querySelectorAll(".btn");
+    console.log(btns);
+
+    for (i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", calculate);
+    }
+    </script>
+</body>
+
+</html>
